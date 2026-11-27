@@ -54,7 +54,13 @@ jobs:
         run: npm run build
 
       - name: Set version
-        run: npm version ${{ github.event.inputs.version }} -m "Release %s"
+        run: |
+          CURRENT=$(node -p "require('./package.json').version")
+          if [ "$CURRENT" != "${{ github.event.inputs.version }}" ]; then
+            npm version ${{ github.event.inputs.version }} -m "Release %s"
+          else
+            git tag "v${{ github.event.inputs.version }}"
+          fi
 
       - name: Publish to npm
         run: npm publish --provenance --access public
@@ -63,7 +69,7 @@ jobs:
 
       - name: Push version commit and tag
         run: |
-          git push origin ${{ github.event.inputs.branch }}
+          git push origin ${{ github.event.inputs.branch }} 2>/dev/null || true
           git push origin v${{ github.event.inputs.version }}
 
       - name: Install asciidoctor

@@ -315,32 +315,34 @@ message ${this.protoMessageName(indexName)} {
       const entityName = `${PROTO_PACKAGE}.${this.protoMessageName(indexName)}`;
       const vecStr = `[${queryVector.join(', ')}]`;
 
-      let queryString = `select e.doc_id, e.${METADATA_FIELD}, score(e)`;
-      if (includeVector) {
-        queryString += `, e.${VECTOR_FIELD}`;
-      }
-      queryString += ` from ${entityName} e where e.${VECTOR_FIELD} <-> ${vecStr}~${topK}`;
-
-      if (filter) {
-        const filterClause = this.buildFilterClause(filter);
-        if (filterClause) {
-          queryString += ` filtering ${filterClause}`;
-        }
-      }
+      const queryString =
+        `select e.doc_id, e.${METADATA_FIELD}, score(e)` +
+        ` from ${entityName} e where e.${VECTOR_FIELD} <-> ${vecStr}~${topK}` +
+        (filter ? ` filtering ${this.buildFilterClause(filter)}` : '');
 
       const results = await client.query({ queryString });
 
-      return results.map((row: any[]) => {
+      const queryResults: QueryResult[] = results.map((row: any[]) => {
         const result: QueryResult = {
           id: row[0] as string,
           score: (row[2] as number) || 0,
           metadata: row[1] ? JSON.parse(row[1] as string) : {}
         };
-        if (includeVector && row[3]) {
-          result.vector = row[3] as number[];
-        }
         return result;
       });
+
+      if (includeVector && queryResults.length > 0) {
+        for (const result of queryResults) {
+          const entry = await client.get(result.id);
+          if (entry && entry.embedding) {
+            result.vector = Array.isArray(entry.embedding)
+              ? (entry.embedding as number[])
+              : [entry.embedding as number];
+          }
+        }
+      }
+
+      return queryResults;
     } finally {
       await client.disconnect();
     }

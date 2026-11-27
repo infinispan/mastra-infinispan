@@ -1,14 +1,22 @@
-# Security Policy
+# Security policy
 
-## Reporting a Vulnerability
+The Infinispan team and community take all security bugs very seriously.
+You can find our guidelines here regarding our policy and security disclosure.
 
-If you discover a security vulnerability in this project, please report it responsibly.
+## Reporting security issues
 
-**Do not open a public GitHub issue for security vulnerabilities.**
+Please report any security issues you find to:
 
-Instead, please report vulnerabilities to the Infinispan security team:
+    security at infinispan.org
 
-- Email: infinispan-security@redhat.com
-- Or use the GitHub Security Advisories feature on this repository
+### Why follow this process
 
-We will acknowledge receipt within 48 hours and provide a detailed response within 5 business days.
+Due to the sensitive nature of security bugs, the disclosure process is more constrained than a regular bug.
+We appreciate you following these industry accepted guidelines, which gives time for a proper fix and limit the time
+window of attack.
+
+## Supported Versions
+
+| Version | Supported          |
+| ------- | ------------------ |
+| 0.1.0   | :white_check_mark: |

@@ -1,0 +1,36 @@
+# Tests
+src/**/*.test.ts
+
+# CI/CD
+.github/
+
+# Git hooks
+.githooks/
+.husky/
+.gitmessage
+
+# Config files
+.editorconfig
+.eslintrc
+.prettierrc
+.prettierignore
+.gitignore
+tsconfig.json
+tsdown.config.ts
+vitest.config.ts
+
+# Docker
+docker-compose.yaml
+
+# Documentation
+AI-CODE.md
+AGENTS.md
+CONTRIBUTING.md
+SECURITY.md
+
+# IDE
+.idea/
+*.iml
+
+# Misc
+.claude/

@@ -1,0 +1,21 @@
+[id='rag-architecture_{context}']
+= RAG architecture with {brandname}
+
+Retrieval-Augmented Generation (RAG) combines vector search with LLM generation to answer questions using your own data.
+
+The architecture works as follows:
+
+. **Ingestion**: Documents are chunked, embedded using an embedding model (for example OpenAI `text-embedding-3-small`), and stored in {brandname} as vectors.
+. **Query**: The user's question is converted into an embedding vector.
+. **Retrieval**: {brandname} performs kNN vector search to find the most relevant document chunks.
+. **Generation**: The retrieved chunks and the original question are sent to an LLM, which generates a grounded answer.
+
+This approach allows using smaller, cheaper LLMs for the final answer because {brandname} handles the retrieval of relevant context.
+The LLM only needs to synthesize the retrieved chunks into a coherent response.
+
+{brandname} provides several advantages as a RAG backend:
+
+* kNN vector search with cosine, L2, and inner product similarity.
+* Hybrid queries combining vector search with metadata filtering using the Ickle query language.
+* Distributed indexing that scales across cluster nodes.
+* In-memory performance with optional persistence.

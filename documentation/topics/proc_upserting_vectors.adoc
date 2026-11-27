@@ -1,0 +1,27 @@
+[id='upserting-vectors_{context}']
+= Storing vectors
+
+Store embedding vectors with optional metadata and custom IDs.
+
+.Procedure
+. Upsert vectors with metadata:
++
+[source,typescript]
+----
+include::../topics/code_examples/upsert-vectors.ts[]
+----
++
+Metadata is stored as serialized JSON inside {brandname} and is returned in query results.
+
+. Update an existing vector by ID:
++
+[source,typescript]
+----
+await store.updateVector({
+  indexName: 'documents',
+  id: 'doc-1',
+  update: {
+    metadata: { status: 'reviewed' },
+  },
+});
+----

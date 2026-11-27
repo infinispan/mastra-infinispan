@@ -1,0 +1,10 @@
+:brandname: Infinispan
+:mastra: Mastra
+:pkg_name: @infinispan/mastra
+
+:doc_home: https://infinispan.org/documentation/
+:mastra_docs: https://mastra.ai/docs
+:server_docs: https://infinispan.org/docs/stable/titles/server/server.html
+:code_tutorials: https://github.com/infinispan/infinispan-simple-tutorials/
+:query_docs: https://infinispan.org/docs/stable/titles/query/query.html
+:vector_docs: https://infinispan.org/ai/

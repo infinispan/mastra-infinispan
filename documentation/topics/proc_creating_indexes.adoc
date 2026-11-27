@@ -1,0 +1,51 @@
+[id='creating-indexes_{context}']
+= Creating indexes
+
+Create a vector index with a specified dimension and similarity metric.
+{brandname} automatically manages the protobuf schema and indexed cache.
+
+.Procedure
+. Create an index:
++
+[source,typescript]
+----
+include::../topics/code_examples/create-index.ts[]
+----
++
+. The `metric` parameter supports the following values:
++
+[cols="1,2",options="header"]
+|===
+|Metric |Description
+
+|`cosine`
+|Cosine similarity (default). Best for normalized embeddings.
+
+|`euclidean`
+|L2 distance. Best for spatial data.
+
+|`dotproduct`
+|Inner product. Best for embeddings that are not normalized.
+|===
+
+. List existing indexes:
++
+[source,typescript]
+----
+const indexes = await store.listIndexes();
+----
+
+. Get index statistics:
++
+[source,typescript]
+----
+const stats = await store.describeIndex({ indexName: 'documents' });
+// { dimension: 1536, count: 42, metric: 'cosine' }
+----
+
+. Delete an index:
++
+[source,typescript]
+----
+await store.deleteIndex({ indexName: 'documents' });
+----

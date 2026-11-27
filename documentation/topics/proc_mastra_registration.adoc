@@ -1,0 +1,19 @@
+[id='mastra-registration_{context}']
+= Registering with {mastra}
+
+Register the {brandname} vector store in your {mastra} configuration so agents and tools can use it.
+
+.Procedure
+. Add the vector store to the {mastra} `vectors` configuration:
++
+[source,typescript]
+----
+include::../topics/code_examples/mastra-registration.ts[]
+----
++
+. Access the vector store from agents or tools:
++
+[source,typescript]
+----
+const vectorStore = mastra.getVector('infinispan');
+----

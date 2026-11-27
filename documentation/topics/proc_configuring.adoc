@@ -1,0 +1,43 @@
+[id='configuring_{context}']
+= Configuring the vector store
+
+Create an `InfinispanVector` instance to connect to your {brandname} Server.
+
+.Procedure
+. Import the `InfinispanVector` class:
++
+[source,typescript]
+----
+include::../topics/code_examples/configure-basic.ts[]
+----
++
+. The following configuration options are available:
++
+[cols="1,1,3",options="header"]
+|===
+|Option |Default |Description
+
+|`id`
+|_(required)_
+|Unique identifier for this vector store instance.
+
+|`host`
+|`localhost`
+|{brandname} Server hostname.
+
+|`port`
+|`11222`
+|{brandname} Server Hot Rod port.
+
+|`username`
+|_(optional)_
+|Authentication username.
+
+|`password`
+|_(optional)_
+|Authentication password.
+
+|`uri`
+|_(optional)_
+|Hot Rod URI. When provided, `host` and `port` are ignored.
+|===

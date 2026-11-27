@@ -1,0 +1,3 @@
+include::{stories}/assembly_getting_started.adoc[leveloffset=+0]
+include::{stories}/assembly_vector_operations.adoc[leveloffset=+0]
+include::{stories}/assembly_rag_agent.adoc[leveloffset=+0]

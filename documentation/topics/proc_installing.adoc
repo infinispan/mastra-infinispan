@@ -1,0 +1,28 @@
+[id='installing_{context}']
+= Installing {pkg_name}
+
+Install the {brandname} vector store for {mastra} from npm.
+
+.Prerequisites
+* Node.js 22 or later.
+* An {brandname} Server instance. You can start one with Docker:
++
+[source,shell]
+----
+docker run -it --rm -p 11222:11222 -e USER=admin -e PASS=password quay.io/infinispan/server:latest
+----
+
+.Procedure
+. Install the package with npm:
++
+[source,shell]
+----
+npm install @infinispan/mastra
+----
++
+. Install the {mastra} core package as a peer dependency if you have not already:
++
+[source,shell]
+----
+npm install @mastra/core
+----

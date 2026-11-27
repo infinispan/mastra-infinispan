@@ -1,0 +1,29 @@
+[id='querying-vectors_{context}']
+= Querying vectors
+
+Perform kNN (k-nearest neighbor) vector search to find the most similar vectors.
+
+.Procedure
+. Run a basic kNN query:
++
+[source,typescript]
+----
+include::../topics/code_examples/query-vectors.ts[]
+----
++
+Results include the vector ID, similarity score, and metadata.
+
+. Include the original vectors in results:
++
+[source,typescript]
+----
+const results = await store.query({
+  indexName: 'documents',
+  queryVector: embedding,
+  topK: 5,
+  includeVector: true,
+});
+// results[0].vector contains the stored embedding
+----
+
+Internally, {pkg_name} uses the Ickle query language with the `<->` operator to perform kNN search over {brandname} indexed caches.

@@ -1,0 +1,22 @@
+[id='deleting-vectors_{context}']
+= Deleting vectors
+
+Remove vectors by ID or in batch.
+
+.Procedure
+. Delete a single vector:
++
+[source,typescript]
+----
+await store.deleteVector({ indexName: 'documents', id: 'doc-1' });
+----
+
+. Delete multiple vectors by ID:
++
+[source,typescript]
+----
+await store.deleteVectors({
+  indexName: 'documents',
+  ids: ['doc-1', 'doc-2', 'doc-3'],
+});
+----

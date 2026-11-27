@@ -66,6 +66,26 @@ jobs:
           git push origin ${{ github.event.inputs.branch }}
           git push origin v${{ github.event.inputs.version }}
 
+      - name: Install asciidoctor
+        run: sudo gem install asciidoctor 'asciidoctor-tabs:1.0.0.beta.6' --no-document
+
+      - name: Generate user docs
+        run: npm run docs:user
+
+      - name: Generate API docs
+        run: npm run docs:api
+
+      - name: Package docs
+        run: |
+          cd out
+          zip -9r ../docs.zip .
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-${{ github.event.inputs.version }}
+          path: docs.zip
+
       - name: Create GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -73,4 +93,5 @@ jobs:
           gh release create "v${{ github.event.inputs.version }}" \
             --target "${{ github.event.inputs.branch }}" \
             --title "v${{ github.event.inputs.version }}" \
-            --generate-notes
+            --generate-notes \
+            docs.zip

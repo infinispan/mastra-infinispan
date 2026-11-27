@@ -23,6 +23,9 @@ vitest.config.ts
 docker-compose.yaml
 
 # Documentation
+documentation/
+scripts/
+out/
 AI-CODE.md
 AGENTS.md
 CONTRIBUTING.md

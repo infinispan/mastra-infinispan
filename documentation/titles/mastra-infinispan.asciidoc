@@ -1,0 +1,24 @@
+//Directory attributes
+:stories: ../stories
+:topics: ../topics
+
+//Doc attributes
+//Community
+:community:
+include::{topics}/attributes/community-attributes.adoc[]
+
+//Title attributes
+:toc2:
+:icons: font
+:toclevels: 3
+:numbered:
+:sectanchors:
+
+//Title
+= {brandname} {mastra} Integration Guide
+
+The `{pkg_name}` package provides an {brandname} vector store for the {mastra} TypeScript AI framework.
+It enables kNN vector search, hybrid queries, and RAG (Retrieval-Augmented Generation) workflows using {brandname} as the backend.
+
+//User stories
+include::stories.adoc[]

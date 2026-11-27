@@ -1,0 +1,34 @@
+[id='building-rag-agent_{context}']
+= Building a RAG agent
+
+Create a {mastra} agent that uses `createVectorQueryTool` to perform semantic search over {brandname}.
+
+.Prerequisites
+* An {brandname} Server running with indexed data (see xref:vector-operations[Vector operations]).
+* An OpenAI API key for embedding generation and LLM responses.
+
+.Procedure
+. Create the agent with a vector query tool:
++
+[source,typescript]
+----
+include::../topics/code_examples/rag-agent.ts[]
+----
++
+. Register the agent in your {mastra} configuration:
++
+[source,typescript]
+----
+include::../topics/code_examples/rag-mastra-config.ts[]
+----
++
+. Run with {mastra} Studio:
++
+[source,shell]
+----
+npx mastra dev
+----
++
+Open `localhost:4111`, select the agent, and ask questions about your indexed data.
+
+For a complete example with dataset ingestion, see the link:{code_tutorials}tree/main/infinispan-ai/mastra[Infinispan Mastra tutorial].

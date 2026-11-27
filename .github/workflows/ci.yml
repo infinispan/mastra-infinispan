@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm install
+      - run: npm run lint
+      - run: npm run format:check
+
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      infinispan:
+        image: quay.io/infinispan/server:latest
+        ports:
+          - 11222:11222
+        env:
+          USER: admin
+          PASS: password
+        options: >-
+          --health-cmd "curl -f http://localhost:11222/rest/v2/cache-managers/default/health/status || exit 1"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - run: npm install
+
+      - name: Run tests
+        run: npx vitest run
+        env:
+          INFINISPAN_HOST: localhost
+          INFINISPAN_PORT: 11222

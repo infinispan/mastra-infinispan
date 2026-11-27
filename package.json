@@ -1,0 +1,76 @@
+{
+  "name": "@infinispan/mastra",
+  "version": "0.1.0",
+  "description": "Infinispan vector store provider for Mastra",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown --config tsdown.config.ts",
+    "build:watch": "tsdown --watch --config tsdown.config.ts",
+    "pretest": "docker compose up -d --wait",
+    "test": "vitest run",
+    "posttest": "docker compose down -v",
+    "lint": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.ts": "prettier --config ./.prettierrc --write"
+  },
+  "keywords": [
+    "mastra",
+    "infinispan",
+    "vector-search",
+    "vector-store",
+    "knn",
+    "cache"
+  ],
+  "dependencies": {
+    "infinispan": "^0.16.3",
+    "protobufjs": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@mastra/core": ">=1.0.0-0 <2.0.0-0"
+  },
+  "devDependencies": {
+    "@mastra/core": "^1.86.0",
+    "@types/node": "^22.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.5.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^5.5.0",
+    "vitest": "^3.0.0"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.d.*ts.map"
+  ],
+  "homepage": "https://infinispan.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infinispan/mastra-infinispan.git"
+  },
+  "bugs": {
+    "url": "https://github.com/infinispan/mastra-infinispan/issues"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}

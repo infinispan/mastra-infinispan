@@ -1,4 +1,4 @@
-# Contributing to @infinispan/mastra
+# Contributing to infinispan-mastra
 
 Thank you for your interest in contributing to the Infinispan Mastra integration.
 

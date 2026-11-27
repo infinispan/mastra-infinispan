@@ -1,4 +1,4 @@
-# @infinispan/mastra
+# infinispan-mastra
 
 Infinispan vector store provider for [Mastra](https://mastra.ai).
 
@@ -7,13 +7,13 @@ Provides vector search (kNN) capabilities using [Infinispan](https://infinispan.
 ## Installation
 
 ```bash
-npm install @infinispan/mastra
+npm install infinispan-mastra
 ```
 
 ## Usage
 
 ```typescript
-import { InfinispanVector } from '@infinispan/mastra';
+import { InfinispanVector } from 'infinispan-mastra';
 
 const store = new InfinispanVector({
   id: 'my-store',
@@ -49,7 +49,7 @@ const results = await store.query({
 
 ```typescript
 import { Mastra } from '@mastra/core';
-import { InfinispanVector } from '@infinispan/mastra';
+import { InfinispanVector } from 'infinispan-mastra';
 
 const mastra = new Mastra({
   vectors: {

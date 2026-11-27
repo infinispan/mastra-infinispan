@@ -1,4 +1,4 @@
-import { InfinispanVector } from '@infinispan/mastra';
+import { InfinispanVector } from 'infinispan-mastra';
 
 const store = new InfinispanVector({
   id: 'my-store',

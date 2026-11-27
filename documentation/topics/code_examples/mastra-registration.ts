@@ -1,5 +1,5 @@
 import { Mastra } from '@mastra/core';
-import { InfinispanVector } from '@infinispan/mastra';
+import { InfinispanVector } from 'infinispan-mastra';
 
 const mastra = new Mastra({
   vectors: {

@@ -1,6 +1,6 @@
 :brandname: Infinispan
 :mastra: Mastra
-:pkg_name: @infinispan/mastra
+:pkg_name: infinispan-mastra
 
 :doc_home: https://infinispan.org/documentation/
 :mastra_docs: https://mastra.ai/docs

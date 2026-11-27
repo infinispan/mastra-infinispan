@@ -17,7 +17,7 @@ docker run -it --rm -p 11222:11222 -e USER=admin -e PASS=password quay.io/infini
 +
 [source,shell]
 ----
-npm install @infinispan/mastra
+npm install infinispan-mastra
 ----
 +
 . Install the {mastra} core package as a peer dependency if you have not already:

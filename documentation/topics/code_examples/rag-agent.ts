@@ -1,5 +1,5 @@
 import { Agent } from '@mastra/core/agent';
-import { InfinispanVector } from '@infinispan/mastra';
+import { InfinispanVector } from 'infinispan-mastra';
 import { createVectorQueryTool } from '@mastra/rag';
 import { ModelRouterEmbeddingModel } from '@mastra/core/llm';
 import { Memory } from '@mastra/memory';
